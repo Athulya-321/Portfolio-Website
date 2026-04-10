@@ -101,7 +101,7 @@ export function Projects() {
   const [gridSize, setGridSize] = useState<GridSize>('medium');
 
   const gridClass: Record<GridSize, string> = {
-    small:  'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4',
+    small:  'grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4',
     medium: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8',
     large:  'grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12',
   };
@@ -197,8 +197,8 @@ export function Projects() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  {/* Grid size toggle */}
-                  <div className="flex items-center gap-1 p-1 bg-secondary/60 rounded-full border border-border/50">
+                  {/* Grid size toggle - Hidden on mobile, visible on desktop */}
+                  <div className="hidden md:flex items-center gap-1 p-1 bg-secondary/60 rounded-full border border-border/50">
                     {([['large', Grid], ['medium', LayoutGrid], ['small', Grid3X3]] as const).map(([size, Icon]) => (
                       <motion.button 
                         key={size} 
