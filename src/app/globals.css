@@ -1,43 +1,54 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #09090b;
+  --background: #fbf8f9;
+  --foreground: #2d1a29;
 
-  --primary: #8b5cf6;
+  --primary: #d28892;
   --primary-foreground: #ffffff;
-  --secondary: #f3f4f6;
-  --secondary-foreground: #1f2937;
+  --secondary: #f4e8eb;
+  --secondary-foreground: #3d2b33;
 
-  --accent: #c4b5fd;
-  --accent-foreground: #1e1e24;
+  --accent: #c8b6e6;
+  --accent-foreground: #221226;
 
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
+  --muted: #f7eced;
+  --muted-foreground: #8a737d;
 
-  --border: #e4e4e7;
+  --border: #ebd5dc;
   
-  --grad-start: #f97316; /* orange */
-  --grad-end: #ec4899; /* pink */
+  --grad-start: #ff758c;
+  --grad-middle: #ff7eb3;
+  --grad-end: #a8c0ff;
 
-  --radius: 0.5rem;
+  --bg-gradient: linear-gradient(-45deg, #fce4ec, #f3e5f5, #e8eaf6, #fff3e0);
+
+  --radius: 0.75rem;
 }
 
 .dark {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --primary: #a78bfa;
+  --background: #09030a;
+  --foreground: #ffffff;
+  
+  --primary: #df73c3;
   --primary-foreground: #ffffff;
-  --secondary: #1f2937;
-  --secondary-foreground: #f9fafb;
-  --accent: #4c1d95;
+  
+  --secondary: #261b29;
+  --secondary-foreground: #f6edf2;
+  
+  --accent: #b85e96;
   --accent-foreground: #ffffff;
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
-  --border: #27272a;
+  
+  --muted: #2d1d30;
+  --muted-foreground: #a68ba8;
+  
+  --border: #3d2642;
 
-  --grad-start: #8b5cf6; /* purple */
-  --grad-end: #06b6d4; /* cyan */
+  --grad-start: #ff0f7b; 
+  --grad-middle: #f89b29;
+  --grad-end: #00f2fe; 
+
+  --bg-gradient: linear-gradient(-45deg, #1a0b2e, #290a38, #0b1338, #360721);
 }
 
 @theme inline {
@@ -91,14 +102,20 @@ html {
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  background-size: 400% 400%;
+  animation: gradient-xy 20s ease infinite;
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s ease, color 0.5s ease, background-image 0.5s ease;
 }
 
 .gradient-text {
-  background: linear-gradient(to right, var(--grad-start), var(--grad-end));
+  background: linear-gradient(135deg, var(--grad-start), var(--grad-middle), var(--grad-end));
+  background-size: 200% 200%;
+  animation: gradient-xy 5s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

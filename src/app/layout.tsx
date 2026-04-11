@@ -17,8 +17,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Adhithyan VV | Portfolio",
+  title: "Athulya M | Portfolio",
   description: "A highly responsive and visually premium personal portfolio.",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

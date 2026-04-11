@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const titles = [" Hi there..👋🏻", "Adhithyan here...🤗" , "Have any idea.. 🤔", "Lets connect..🤝"];
+    const titles = ["Hi there! 👋", "Athulya here... 🌸", "Got any ideas? 💡", "Let's connect! ✨"];
     let index = 0;
     
     const interval = setInterval(() => {

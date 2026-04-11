@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
-import { Mail, MapPin, Phone, Github, Linkedin, Instagram, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Github, Linkedin, MessageCircle, Send } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 
 function MagneticText({ children, className = "" }: { children: React.ReactNode, className?: string }) {
@@ -127,8 +127,8 @@ export function Contact() {
         <div className="flex flex-col items-center text-center mb-20">
           <MagneticText>
             <h2 className="text-5xl md:text-8xl font-display font-bold tracking-tighter uppercase mb-6 leading-none text-foreground">
-              Ready to <br />
-              <span className="gradient-text">Defy Limits?</span>
+              Let's Create <br />
+              <span className="gradient-text">Beautiful Things.</span>
             </h2>
           </MagneticText>
           <motion.p 
@@ -137,7 +137,7 @@ export function Contact() {
             viewport={{ once: true }}
             className="text-xl text-muted-foreground max-w-2xl font-light italic"
           >
-            "Curiosity is the engine of innovation. Let's build the future together."
+            "Every great idea begins with a simple conversation. Let's make magic happen."
           </motion.p>
         </div>
 
@@ -147,29 +147,29 @@ export function Contact() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-center">
             <ContactOrb 
               icon={Mail} 
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=adhithyanvv2005@gmail.com" 
-              label="The Channel" 
-              detail="adhithyanvv2005@gmail.com" 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=athulyavdy123@gmail.com" 
+              label="Email Me" 
+              detail="athulyavdy123@gmail.com" 
               delay={0}
             />
             <ContactOrb 
               icon={Phone} 
-              href="tel:+918590648846" 
-              label="The Line" 
-              detail="+91 8590648846" 
+              href="tel:+918848672142" 
+              label="Call Me" 
+              detail="+91 8848672142" 
               delay={0.5}
             />
             <ContactOrb 
               icon={MapPin} 
-              label="The Base" 
+              label="Based In" 
               detail="Kerala, India" 
               delay={1}
             />
             <div className="flex justify-center items-center gap-6 p-8">
               {[
-                { icon: Github, href: 'https://github.com/Adhithyan-VV-05' },
-                { icon: Linkedin, href: 'https://www.linkedin.com/in/adhithyan-vv' },
-                { icon: Instagram, href: 'https://www.instagram.com/adhithyan_vv_?igsh=MWZmNGRzcTdnMnptbg==' },
+                { icon: Github, href: 'https://github.com/Athulya-321' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/athulya-mm' },
+                { icon: MessageCircle, href: 'https://wa.me/918848672142' },
               ].map((social, i) => {
                 const Icon = social.icon;
                 return (
@@ -198,37 +198,37 @@ export function Contact() {
             {/* Animated breathing border */}
             <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,var(--primary),transparent)] group-hover:animate-[spin_4s_linear_infinite]" />
             
-            <div className="relative bg-background/95 backdrop-blur-2xl rounded-[2.45rem] p-10 md:p-14">
+            <div className="relative bg-background/60 backdrop-blur-3xl border-t border-white/10 rounded-[2.45rem] p-10 md:p-14">
               <form ref={formRef} className="flex flex-col gap-8" onSubmit={handleSend}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-2 italic">The Pilot (Name)</label>
+                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-2 italic">Who are you?</label>
                     <input 
                       required
                       name="pilot"
                       type="text" 
-                      placeholder="Identified as..." 
+                      placeholder="Your name..." 
                       className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:border-primary/50 transition-colors focus:ring-1 focus:ring-primary/20 placeholder:text-muted-foreground/30"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-2 italic">The Subject (Clearance)</label>
+                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-2 italic">What's the vibe?</label>
                     <input 
                       required
                       name="subject"
                       type="text" 
-                      placeholder="Frequency set to..." 
+                      placeholder="Subject..." 
                       className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:border-primary/50 transition-colors focus:ring-1 focus:ring-primary/20 placeholder:text-muted-foreground/30"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-2 italic">The Manifesto (Message)</label>
+                  <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-2 italic">Tell me your story...</label>
                   <textarea 
                     required
                     name="manifesto"
-                    placeholder="Describe the mission..." 
+                    placeholder="Your message..." 
                     rows={4}
                     className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:border-primary/50 transition-colors focus:ring-1 focus:ring-primary/20 placeholder:text-muted-foreground/30 resize-none"
                   />
@@ -244,10 +244,10 @@ export function Contact() {
                   } disabled:opacity-70`}
                 >
                   <span className="relative z-10 font-display uppercase tracking-widest transition-colors group-hover:text-white">
-                    {status === 'sending' ? "Establishing Link..." : 
-                     status === 'success' ? "Connection Established" : 
-                     status === 'error' ? "Link Failure" : 
-                     "Connect with Me"}
+                    {status === 'sending' ? "Sending..." : 
+                     status === 'success' ? "Sent with Love ✨" : 
+                     status === 'error' ? "Couldn't Send :(" : 
+                     "Send Message "}
                   </span>
                   {status === 'idle' && <Send className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />}
                   {status === 'sending' && (

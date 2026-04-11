@@ -1,9 +1,8 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const { name, subject, message } = await request.json();
 
@@ -16,7 +15,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
-      to: 'adhithyanvv2005@gmail.com',
+      to: 'athulyavdy123@gmail.com',
       subject: `New Message: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>

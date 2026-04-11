@@ -6,196 +6,139 @@ export interface CategoryMeta {
   images: string[];
 }
 
-// ─── Individual Category Arrays ───────────────────────────────────────────
-
-export const achievementsAndOtherActivities = [
-  '/certificates/Achievements & Other Activities/oc1.jpg',
-  '/certificates/Achievements & Other Activities/oc2.jpg',
-  '/certificates/Achievements & Other Activities/oc3.jpg',
-  '/certificates/Achievements & Other Activities/oc4.jpg',
-  '/certificates/Achievements & Other Activities/oc5.jpg',
+export const certificationsSkillTests = [
+  "/certificates/Certifications & Skill Tests/cc1.jpg",
+  "/certificates/Certifications & Skill Tests/cc2.jpg",
+  "/certificates/Certifications & Skill Tests/cc3.jpg"
 ];
 
-export const badges = [
-  '/certificates/Badges/b1.png',
-  '/certificates/Badges/b2.png',
-  '/certificates/Badges/b3.png',
-  '/certificates/Badges/b4.png',
-  '/certificates/Badges/b5.png',
-  '/certificates/Badges/b6.png',
-  '/certificates/Badges/b7.png',
-  '/certificates/Badges/b8.png',
-  '/certificates/Badges/b9.png',
-  '/certificates/Badges/b10.png',
-  '/certificates/Badges/b11.jpg',
-  '/certificates/Badges/b15.png',
-  '/certificates/Badges/b16.png',
-  '/certificates/Badges/b17.png',
-  '/certificates/Badges/b18.png',
-  '/certificates/Badges/b19.png',
-  '/certificates/Badges/b20.png',
-  '/certificates/Badges/b21.png',
-  '/certificates/Badges/b23.png',
-  '/certificates/Badges/b24.png',
-  '/certificates/Badges/b25.png',
-  '/certificates/Badges/b26.png',
-  '/certificates/Badges/b27.png',
-];
-
-export const bootCampsAndWorkshops = [
-  '/certificates/Boot Camps & Workshops/bc0.jpg',
-  '/certificates/Boot Camps & Workshops/bc1.jpg',
-  '/certificates/Boot Camps & Workshops/bc4.jpg',
-  '/certificates/Boot Camps & Workshops/bc5.jpg',
-  '/certificates/Boot Camps & Workshops/bc7.jpg',
-  '/certificates/Boot Camps & Workshops/bc9.jpg',
-  '/certificates/Boot Camps & Workshops/bc10.jpg',
-  '/certificates/Boot Camps & Workshops/bc10.png',
-  '/certificates/Boot Camps & Workshops/bc14.png',
-  '/certificates/Boot Camps & Workshops/bc15.png',
-  '/certificates/Boot Camps & Workshops/bc17.png',
-];
-
-export const certificationsAndSkillTests = [
-  '/certificates/Certifications & Skill Tests/c2.jpg',
-  '/certificates/Certifications & Skill Tests/c3.png',
-  '/certificates/Certifications & Skill Tests/c4.jpg',
-  '/certificates/Certifications & Skill Tests/c5.png',
-  '/certificates/Certifications & Skill Tests/c6.png',
-  '/certificates/Certifications & Skill Tests/c7.png',
+export const cISCOCertificates = [
+  "/certificates/CISCO Certificates/1000123378.jpg",
+  "/certificates/CISCO Certificates/1000123381.jpg",
+  "/certificates/CISCO Certificates/1000123384.jpg",
+  "/certificates/CISCO Certificates/1000123451.jpg",
+  "/certificates/CISCO Certificates/1000123473.jpg",
+  "/certificates/CISCO Certificates/1000123474.jpg",
+  "/certificates/CISCO Certificates/1000123478.jpg",
+  "/certificates/CISCO Certificates/1000123479.jpg",
+  "/certificates/CISCO Certificates/1000123480.jpg"
 ];
 
 export const hackathons = [
-  '/certificates/Hackathons/h1.jpg',
-  '/certificates/Hackathons/h2.jpg',
-  '/certificates/Hackathons/h3.jpg',
-  '/certificates/Hackathons/h4.jpg',
+  "/certificates/Hackathons/1000123299.jpg",
+  "/certificates/Hackathons/1000123475.jpg",
+  "/certificates/Hackathons/1000123481.jpg"
+];
+
+export const iBMCertificatesAndBadges = [
+  "/certificates/IBM Certificates and Badges/1000123439.jpg",
+  "/certificates/IBM Certificates and Badges/1000123438.jpg",
+  "/certificates/IBM Certificates and Badges/1000123459.jpg",
+  "/certificates/IBM Certificates and Badges/1000123387.jpg",
+  "/certificates/IBM Certificates and Badges/1000123392.jpg",
+  "/certificates/IBM Certificates and Badges/1000123395.jpg",
+  "/certificates/IBM Certificates and Badges/1000123398.jpg",
 ];
 
 export const infosysCertificates = [
-  '/certificates/Infosys Certificates/cc1.jpg',
-  '/certificates/Infosys Certificates/cc2.jpg',
-  '/certificates/Infosys Certificates/cc3.jpg',
-  '/certificates/Infosys Certificates/cc4.jpg',
-  '/certificates/Infosys Certificates/cc5.jpg',
-  '/certificates/Infosys Certificates/cc6.jpg',
-  '/certificates/Infosys Certificates/cc7.jpg',
-  '/certificates/Infosys Certificates/cc8.jpg',
-  '/certificates/Infosys Certificates/cc9.jpg',
-  '/certificates/Infosys Certificates/cc10.jpg',
-  '/certificates/Infosys Certificates/cc11.jpg',
-  '/certificates/Infosys Certificates/cc12.jpg',
-  '/certificates/Infosys Certificates/cc13.jpg',
-  '/certificates/Infosys Certificates/cc15.jpg',
-  '/certificates/Infosys Certificates/cc16.jpg',
-  '/certificates/Infosys Certificates/cc17.jpg',
-  '/certificates/Infosys Certificates/cc18.jpg',
-  '/certificates/Infosys Certificates/cc20.jpg',
-  '/certificates/Infosys Certificates/cc23.jpg',
-  '/certificates/Infosys Certificates/cc24.jpg',
-  '/certificates/Infosys Certificates/cc25.jpg',
-  '/certificates/Infosys Certificates/cc26.jpg',
+  "/certificates/Infosys Certificates/1000123402.jpg",
+  "/certificates/Infosys Certificates/1000123405.jpg",
+  "/certificates/Infosys Certificates/1000123412.jpg",
+  "/certificates/Infosys Certificates/1000123415.jpg",
+  "/certificates/Infosys Certificates/1000123416.jpg",
+  "/certificates/Infosys Certificates/1000123417.jpg",
+  "/certificates/Infosys Certificates/1000123418.jpg",
+  "/certificates/Infosys Certificates/1000123419.jpg",
+  "/certificates/Infosys Certificates/1000123420.jpg",
+  "/certificates/Infosys Certificates/1000123421.jpg",
+  "/certificates/Infosys Certificates/1000123422.jpg",
+  "/certificates/Infosys Certificates/1000123423.jpg",
+  "/certificates/Infosys Certificates/1000123425.jpg",
+  "/certificates/Infosys Certificates/1000123426.jpg",
+  "/certificates/Infosys Certificates/1000123428.jpg",
+  "/certificates/Infosys Certificates/1000123443.jpg",
+  "/certificates/Infosys Certificates/1000123449.jpg"
 ];
 
-export const internships = [
-  '/certificates/internships/i1.png',
-  '/certificates/internships/i2.jpg',
+export const internshipsAndOtherParticipations = [
+  "/certificates/Internships and other Participations/1000123362.jpg",
+  "/certificates/Internships and other Participations/1000123440.jpg",
+  "/certificates/Internships and other Participations/ch1.jpg",
+  "/certificates/Internships and other Participations/ch2.jpg",
+  "/certificates/Internships and other Participations/p1.jpg",
+  "/certificates/Internships and other Participations/p2.jpg",
+  "/certificates/Internships and other Participations/p3.jpg",
+  "/certificates/Internships and other Participations/p6.jpg",
+  "/certificates/Internships and other Participations/p7.jpg"
 ];
 
-export const linkedInAndMSCertificates = [
-  '/certificates/LinkedIn & MS Certificates/ccc1.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc2.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc3.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc4.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc5.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc6.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc7.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc8.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc9.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc10.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc11.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc12.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc13.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc14.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc15.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc16.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc17.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc18.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc19.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc20.jpg',
-  '/certificates/LinkedIn & MS Certificates/ccc25.jpg',
+export const linkedinCourseraCertificates = [
+  "/certificates/Linkedin & Coursera Certificates/1000123373.jpg",
+  "/certificates/Linkedin & Coursera Certificates/1000123427.jpg",
+  "/certificates/Linkedin & Coursera Certificates/1000123429.jpg",
+  "/certificates/Linkedin & Coursera Certificates/1000123430.jpg",
+  "/certificates/Linkedin & Coursera Certificates/1000123462.jpg",
+  "/certificates/Linkedin & Coursera Certificates/1000123466.jpg",
+  "/certificates/Linkedin & Coursera Certificates/1000123477.jpg",
+  "/certificates/Linkedin & Coursera Certificates/c1.jpg",
+  "/certificates/Linkedin & Coursera Certificates/c10.jpg",
+  "/certificates/Linkedin & Coursera Certificates/c2.jpg",
+  "/certificates/Linkedin & Coursera Certificates/c3.jpg",
+  "/certificates/Linkedin & Coursera Certificates/c4.jpg",
+  "/certificates/Linkedin & Coursera Certificates/c5.jpg",
+  "/certificates/Linkedin & Coursera Certificates/c6.jpg",
+  "/certificates/Linkedin & Coursera Certificates/c7.jpg",
+  "/certificates/Linkedin & Coursera Certificates/c9.jpg"
 ];
-
-export const projectCompletionCertificates = [
-  '/certificates/Project Completion Certificates/p1.jpg',
-  '/certificates/Project Completion Certificates/p2.png',
-  '/certificates/Project Completion Certificates/p4.png',
-];
-
-// ─── Main Categories Mapping ──────────────────────────────────────────────
 
 export const CATEGORIES: CategoryMeta[] = [
   {
-    key: 'certificationsAndSkillTests',
+    key: 'certificationsSkillTests',
     label: 'Certifications & Skill Tests',
-    description: 'Industry recognized certifications and standardized skill assessments.',
-    color: 'from-blue-500 to-cyan-400',
-    images: certificationsAndSkillTests,
-  },
-  {
-    key: 'infosysCertificates',
-    label: 'Infosys Certificates',
-    description: 'Certifications completed via Infosys Springboard platform.',
+    description: 'Certifications & Skill Tests collection.',
     color: 'from-blue-600 to-indigo-500',
-    images: infosysCertificates,
+    images: certificationsSkillTests,
   },
   {
-    key: 'linkedInAndMSCertificates',
-    label: 'LinkedIn & MS Certificates',
-    description: 'Professional development courses from LinkedIn Learning and Microsoft.',
+    key: 'cISCOCertificates',
+    label: 'CISCO Certificates',
+    description: 'CISCO Certificates collection.',
     color: 'from-sky-500 to-blue-400',
-    images: linkedInAndMSCertificates,
-  },
-  {
-    key: 'bootCampsAndWorkshops',
-    label: 'Boot Camps & Workshops',
-    description: 'Intensive bootcamps and specialized technical workshops.',
-    color: 'from-orange-500 to-amber-400',
-    images: bootCampsAndWorkshops,
-  },
-  {
-    key: 'achievementsAndOtherActivities',
-    label: 'Achievements & Other Activities',
-    description: 'Awards, recognition, and extracurricular technical activities.',
-    color: 'from-emerald-500 to-teal-400',
-    images: achievementsAndOtherActivities,
+    images: cISCOCertificates,
   },
   {
     key: 'hackathons',
     label: 'Hackathons',
-    description: 'Participation and winning certificates from various hackathons.',
-    color: 'from-rose-500 to-pink-400',
+    description: 'Hackathons collection.',
+    color: 'from-emerald-500 to-teal-400',
     images: hackathons,
   },
   {
-    key: 'projectCompletionCertificates',
-    label: 'Project Completion Certificates',
-    description: 'Official recognition for successfully completed major projects.',
+    key: 'iBMCertificatesAndBadges',
+    label: 'IBM Certificates and Badges',
+    description: 'IBM Certificates and Badges collection.',
+    color: 'from-rose-500 to-pink-400',
+    images: iBMCertificatesAndBadges,
+  },
+  {
+    key: 'infosysCertificates',
+    label: 'Infosys Certificates',
+    description: 'Infosys Certificates collection.',
     color: 'from-fuchsia-500 to-purple-400',
-    images: projectCompletionCertificates,
+    images: infosysCertificates,
   },
   {
-    key: 'badges',
-    label: 'Badges',
-    description: 'Digital badges reflecting specific skill mastery and achievements.',
+    key: 'internshipsAndOtherParticipations',
+    label: 'Internships and other Participations',
+    description: 'Internships and other Participations collection.',
     color: 'from-yellow-400 to-orange-400',
-    images: badges,
+    images: internshipsAndOtherParticipations,
   },
   {
-    key: 'internships',
-    label: 'Internships',
-    description: 'Professional experience certificates from internship programs.',
+    key: 'linkedinCourseraCertificates',
+    label: 'Linkedin & Coursera Certificates',
+    description: 'Linkedin & Coursera Certificates collection.',
     color: 'from-violet-500 to-purple-500',
-    images: internships,
+    images: linkedinCourseraCertificates,
   },
 ];

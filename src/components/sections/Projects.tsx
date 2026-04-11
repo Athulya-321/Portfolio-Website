@@ -3,96 +3,25 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ProjectCard } from '@/components/ui/ProjectCard';
+import { LockedCard } from '@/components/ui/LockedCard';
 import { ChevronDown, X, LayoutGrid, Grid3X3, Grid } from 'lucide-react';
 
 type GridSize = 'small' | 'medium' | 'large';
 
 const projects = [
   {
-    title: 'Yodha Hackathon',
-    description: 'National level hackathon platform designed for seamless registration and real-time event tracking.',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000',
-    tags: ['React', 'Next.js', 'Tailwind', 'Event-Tech'],
-    liveUrl: 'https://yodha.aidajecc.in/',
-    
+    title: 'SeizureGuard AI',
+    description: 'An accessible, AI-powered healthcare dashboard for early seizure detection. It leverages real-time webcam feeds and client-side ML to detect visual warning signs and trigger critical emergency alerts.',
+    image: '/projects/seizureguard.png',
+    tags: ['AI', 'Healthcare', 'ML', 'Computer Vision'],
+    liveUrl: 'https://github.com/EmerinGeorge9/seizureguard.2',
   },
   {
-    title: 'HireFlow AI',
-    description: 'Intelligent recruitment platform bridging talent and recruiters using NLP and conversational AI.',
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1000',
-    tags: ['NLP', 'Conversational AI', 'Hybrid Search', 'Recruitment'],
-    liveUrl: 'https://github.com/Adhithyan-VV-05/HireFlow',
- 
-  },
-  {
-    title: 'AI Health Assistant',
-    description: 'Advanced screening advisor using GPT-4o-mini to analyze medical data for diabetes and cancer risk.',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000',
-    tags: ['OpenAI', 'Neural Networks', 'Python', 'Healthcare'],
-    liveUrl: 'https://github.com/Adhithyan-VV-05/Health-Predict-Plus',
-  },
-  {
-    title: 'Car Price Prediction',
-    description: 'Machine learning model that leverages historical market data to provide accurate automotive valuation.',
-    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1000',
-    tags: ['Machine Learning', 'Regression', 'Data Science', 'Python'],
-    liveUrl: 'https://github.com/Adhithyan-VV-05/Car-Price-Prediction',
-  },
-  {
-    title: 'Diabetes Prediction (SVM)',
-    description: 'Support Vector Machine implementation for clinical risk assessment of diabetes based on patient metrics.',
-    image: 'https://cdn.analyticsvidhya.com/wp-content/uploads/2022/01/Diabetes-Prediction-Using-Machine-Learning.webp',
-    tags: ['SVM', 'Scikit-Learn', 'Analytics', 'Clinical'],
-    liveUrl: 'https://github.com/Adhithyan-VV-05/Diabetes-prediction',
-  },
-  {
-    title: 'Experience-to-Salary Predictor',
-    description: 'Linear Regression model analyzing the correlation between professional experience and salary expectations.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000',
-    tags: ['Linear Regression', 'Python', 'Statistics', 'Matplotlib'],
-    liveUrl: 'https://github.com/Adhithyan-VV-05/salary-prediction',
-  },
-  {
-    title: 'Happy Colors',
-    description: 'A vibrant color palette and gradient generator tool for UI/UX designers and frontend developers.',
-    image: 'https://plus.unsplash.com/premium_photo-1764265388725-bdb8159c2889?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2xvdXJzfGVufDB8fDB8fHww',
-    tags: ['UI/UX', 'CSS Gradients', 'JavaScript', 'Design'],
-    liveUrl: 'https://happycolours.ccbp.tech/',
-  },
-  {
-    title: 'Waste Management Web',
-    description: 'Digital solution for optimizing waste collection and promoting environmental sustainability practices.',
-    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80&w=1000',
-    tags: ['Netlify', 'Sustainability', 'GreenTech', 'Frontend'],
-    liveUrl: 'https://waste-management-web.netlify.app/',
-  },
-  {
-    title: 'Nebullians',
-    description: 'An astronomical tracker providing real-time data on Near-Earth Objects (NEOs) from space agencies.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000',
-    tags: ['Space API', 'Astronomy', 'Real-time Data', 'React'],
-    liveUrl: 'https://nebullians.netlify.app/',
-  },
-  {
-    title: 'Typing Speed Tester',
-    description: 'A high-performance web app to test and improve typing speed with real-time accuracy analytics.',
-    image: 'https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?auto=format&fit=crop&q=80&w=1000',
-    tags: ['JavaScript', 'Gamification', 'WPM Tracker', 'Web'],
-    liveUrl: 'https://tst.ccbp.tech/',
-  },
-  {
-    title: 'Tic Tac Toe Pro',
-    description: 'Cross-platform implementation of the classic game with advanced logic and responsive UI.',
-    image: 'https://media.istockphoto.com/id/1198872799/photo/tic-tac-toe-game.jpg?s=612x612&w=0&k=20&c=0Tg1Rqreq2lB6CW_hmO0tu0kQsWcfzxy-6monfIf4to=',
-    tags: ['Game Dev', 'Responsive', 'JavaScript', 'Logic'],
-    liveUrl: 'https://xox404.ccbp.tech/',
-  },
-  {
-    title: 'Rock Paper Scissors',
-    description: 'An interactive web-based game featuring smooth animations and score-tracking persistent logic.',
-    image: 'https://media.istockphoto.com/id/1324377846/photo/digital-collage-modern-art-rock-scissor-and-paper-hand-sign-with-conflict-geometry.webp?a=1&b=1&s=612x612&w=0&k=20&c=CMetrMxmwslUIu-NxzTgwaiJWmhbrANBxrA6ep-k8pc=',
-    tags: ['DOM Manipulation', 'Interactivity', 'Games', 'Web'],
-    liveUrl: 'https://vvgame1.ccbp.tech/',
+    title: 'The Blossom Portfolio',
+    description: 'A premium, feminine-aesthetic personal portfolio built with Next.js, Framer Motion, and GSAP. Features ambient mesh gradients and immersive glassmorphism for a world-class user experience.',
+    image: '/projects/portfolio.png',
+    tags: ['Next.js', 'Framer Motion', 'GSAP', 'Tailwind'],
+    liveUrl: 'https://athulya-m.netlify.app',
   }
 ];
 
@@ -106,17 +35,13 @@ export function Projects() {
     large:  'grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12',
   };
 
-  // Prevent background scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-
-    return () => {
-      document.body.style.overflow = '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
   return (
@@ -128,13 +53,13 @@ export function Projects() {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-grad-start to-grad-end animate-gradient-xy bg-[length:200%_200%] rounded-full mb-8" />
           <p className="text-lg md:text-xl text-foreground opacity-70 max-w-2xl">
-            A selection of my recent work in Data Science and Web Development.
+            A focused selection of technical developments and creative experiments.
           </p>
         </div>
 
-        {/* Display only the first 4 projects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-16">
-          {projects.slice(0, 4).map((project, index) => (
+        {/* Display only the 2 main projects in the core grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-16 max-w-6xl mx-auto">
+          {projects.map((project, index) => (
             <motion.div
               key={project.title}
               animate={{ 
@@ -159,7 +84,7 @@ export function Projects() {
           >
             <span className="absolute inset-0 bg-gradient-to-r from-grad-start to-grad-end rounded-full blur-sm opacity-50 group-hover:opacity-100 transition-opacity" />
             <span className="relative flex items-center gap-2 bg-background px-8 py-3 rounded-full border border-border hover:border-foreground/20">
-              Wanna see more?
+              Explore Archive
               <ChevronDown className="w-4 h-4 animate-bounce" />
             </span>
           </button>
@@ -175,13 +100,11 @@ export function Projects() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
           >
-            {/* Backdrop Blur */}
             <div 
               className="absolute inset-0 bg-background/80 backdrop-blur-xl"
               onClick={() => setIsOpen(false)}
             />
 
-            {/* Modal Content */}
             <motion.div
               initial={{ scale: 0.9, y: 20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -189,15 +112,14 @@ export function Projects() {
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="relative w-full max-w-7xl h-[85vh] bg-background border border-border rounded-3xl overflow-hidden shadow-2xl flex flex-col"
             >
-              {/* Sticky Header inside Modal */}
+              {/* Header */}
               <div className="p-6 md:p-8 flex flex-col sm:flex-row justify-between items-center border-b border-white/5 bg-background/40 backdrop-blur-md z-10 gap-4">
                 <div>
                   <h3 className="text-2xl font-display font-bold">Project <span className="gradient-text">Archive</span>.</h3>
-                  <p className="text-sm text-muted-foreground">{projects.length} key developments &mdash; Full Collection</p>
+                  <p className="text-sm text-muted-foreground">{projects.length} + 1 Current Developments</p>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  {/* Grid size toggle - Hidden on mobile, visible on desktop */}
                   <div className="hidden md:flex items-center gap-1 p-1 bg-secondary/60 rounded-full border border-border/50">
                     {([['large', Grid], ['medium', LayoutGrid], ['small', Grid3X3]] as const).map(([size, Icon]) => (
                       <motion.button 
@@ -212,7 +134,6 @@ export function Projects() {
                     ))}
                   </div>
 
-                  {/* Animated Close Button */}
                   <button
                     onClick={() => setIsOpen(false)}
                     className="group relative p-2 transition-transform hover:rotate-90 duration-300"
@@ -229,6 +150,7 @@ export function Projects() {
               <div className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar overscroll-contain">
                 <div className={`grid ${gridClass[gridSize]} pb-10`}>
                   <AnimatePresence mode="popLayout">
+                    {/* Projects */}
                     {projects.map((project, index) => (
                       <motion.div
                         layout
@@ -252,6 +174,16 @@ export function Projects() {
                         <ProjectCard index={index} {...project} />
                       </motion.div>
                     ))}
+
+                    {/* The Unlocked Card */}
+                    <motion.div
+                      layout
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <LockedCard />
+                    </motion.div>
                   </AnimatePresence>
                 </div>
               </div>

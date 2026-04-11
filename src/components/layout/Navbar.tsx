@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 const navItems = [
@@ -17,18 +16,8 @@ const navItems = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDpInNavbar, setIsDpInNavbar] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY, scrollYProgress } = useScroll();
   const lastScrollY = useRef(0);
-  
-  useEffect(() => {
-    // Scroll lock for mobile menu
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     // Check initial scroll position
@@ -106,7 +95,7 @@ export function Navbar() {
                 <motion.span 
                    className={`font-display font-bold tracking-tighter text-lg italic ${isDpInNavbar ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'} transition-all duration-500`}
                 >
-                  Adhithyan <span className="text-primary italic">VV</span>
+                  Athulya <span className="text-primary italic">M</span>
                 </motion.span>
               </div>
             </Link>
@@ -134,41 +123,9 @@ export function Navbar() {
             {/* Mobile Navigation Toggle */}
             <div className="flex items-center gap-4 md:hidden">
               <ThemeToggle />
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-secondary/50 text-foreground hover:text-primary transition-colors"
-                aria-label="Toggle menu"
-              >
-                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
             </div>
           </div>
 
-          {/* Mobile Menu */}
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                className="md:hidden overflow-hidden"
-              >
-                <ul className="flex flex-col px-6 py-8 space-y-6">
-                  {navItems.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block text-xl font-display font-bold text-foreground hover:text-primary transition-all"
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </motion.header>
       </div>
     </>
