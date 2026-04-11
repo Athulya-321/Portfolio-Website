@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
-import { Mail, MapPin, Phone, Github, Linkedin, MessageCircle, Send } from 'lucide-react';
+import { motion, useSpring, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
+import { Mail, MapPin, Phone, Github, Linkedin, MessageCircle, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 
 function MagneticText({ children, className = "" }: { children: React.ReactNode, className?: string }) {
@@ -62,7 +62,6 @@ function ContactOrb({ icon: Icon, href, label, detail, delay = 0 }: { icon: any,
       whileTap={{ scale: 0.95 }}
       className="group relative flex flex-col items-center justify-center p-8 rounded-full border border-border bg-secondary/30 backdrop-blur-md transition-colors hover:bg-secondary/50 hover:border-primary/50"
     >
-      {/* Liquid Glow Effect */}
       <div className="absolute inset-0 rounded-full bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <div className="relative z-10 flex flex-col items-center">
@@ -71,7 +70,6 @@ function ContactOrb({ icon: Icon, href, label, detail, delay = 0 }: { icon: any,
         <span className="text-sm font-medium text-foreground text-center">{detail}</span>
       </div>
       
-      {/* Decorative pulse ring */}
       <div className="absolute inset-0 rounded-full border border-primary/10 scale-110 group-hover:scale-125 group-hover:border-primary/30 transition-all duration-700" />
       <div className="absolute inset-0 rounded-full border border-primary/5 scale-125 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-1000" />
     </motion.a>
@@ -80,46 +78,89 @@ function ContactOrb({ icon: Icon, href, label, detail, delay = 0 }: { icon: any,
 
 export function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({ pilot: '', subject: '', manifesto: '' });
 
-  const formRef = useRef<HTMLFormElement>(null);
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formRef.current || status === 'sending') return;
+    if (status === 'sending') return;
     
     setStatus('sending');
-    
-    const formData = new FormData(formRef.current);
-    const name = formData.get('pilot') as string;
-    const subject = formData.get('subject') as string;
-    const message = formData.get('manifesto') as string;
     
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, subject, message }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          name: formData.pilot, 
+          subject: formData.subject, 
+          message: formData.manifesto 
+        }),
       });
 
       if (!response.ok) throw new Error('Failed to send message');
 
       setStatus('success');
-      formRef.current.reset();
-      setTimeout(() => {
-        setStatus('idle');
-      }, 5000);
+      setFormData({ pilot: '', subject: '', manifesto: '' });
+      setTimeout(() => setStatus('idle'), 4000);
     } catch (error) {
       console.error('Error sending email:', error);
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
+      setTimeout(() => setStatus('idle'), 4000);
+    }
+  };
+
+  const getButtonContent = () => {
+    switch(status) {
+      case 'sending':
+        return (
+          <div className="flex items-center gap-2">
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+            />
+            <span>Launching...</span>
+          </div>
+        );
+      case 'success':
+        return (
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-5 h-5" />
+            <span>Successfully Sent!</span>
+          </div>
+        );
+      case 'error':
+        return (
+          <div className="flex items-center gap-2">
+            <AlertCircle className="w-5 h-5" />
+            <span>Connection Failed</span>
+          </div>
+        );
+      default:
+        return (
+          <div className="flex items-center gap-2">
+            <span>Send Message</span>
+            <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          </div>
+        );
+    }
+  };
+
+  const getButtonStyles = () => {
+    switch(status) {
+      case 'sending':
+        return "bg-gradient-to-r from-blue-500 to-cyan-500 shadow-[0_0_20px_rgba(59,130,246,0.5)]";
+      case 'success':
+        return "bg-gradient-to-r from-green-400 via-emerald-500 to-teal-600 shadow-[0_0_20px_rgba(16,185,129,0.5)]";
+      case 'error':
+        return "bg-gradient-to-r from-red-500 via-orange-500 to-rose-600 shadow-[0_0_20px_rgba(239,68,68,0.5)]";
+      default:
+        return "bg-foreground hover:bg-primary shadow-xl hover:shadow-primary/20";
     }
   };
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Background Glows */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] -z-10" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[150px] -z-10" />
 
@@ -142,8 +183,6 @@ export function Contact() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          
-          {/* Contact Orbs Side */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-center">
             <ContactOrb 
               icon={Mail} 
@@ -187,25 +226,24 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Magnetic Form Side */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 100 }}
-            className="relative p-[1.5px] rounded-[2.5rem] overflow-hidden group shadow-xl"
+            className="relative p-[1.5px] rounded-[2.5rem] overflow-hidden group shadow-xl z-20"
           >
-            {/* Animated breathing border */}
             <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent,var(--primary),transparent)] group-hover:animate-[spin_4s_linear_infinite]" />
             
-            <div className="relative bg-background/60 backdrop-blur-3xl border-t border-white/10 rounded-[2.45rem] p-10 md:p-14">
-              <form ref={formRef} className="flex flex-col gap-8" onSubmit={handleSend}>
+            <div className="relative z-10 bg-background/60 backdrop-blur-3xl border-t border-white/10 rounded-[2.45rem] p-10 md:p-14">
+              <form onSubmit={handleSend} className="flex flex-col gap-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-2 italic">Who are you?</label>
                     <input 
                       required
-                      name="pilot"
+                      value={formData.pilot}
+                      onChange={(e) => setFormData({...formData, pilot: e.target.value})}
                       type="text" 
                       placeholder="Your name..." 
                       className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:border-primary/50 transition-colors focus:ring-1 focus:ring-primary/20 placeholder:text-muted-foreground/30"
@@ -215,7 +253,8 @@ export function Contact() {
                     <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-2 italic">What's the vibe?</label>
                     <input 
                       required
-                      name="subject"
+                      value={formData.subject}
+                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
                       type="text" 
                       placeholder="Subject..." 
                       className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:border-primary/50 transition-colors focus:ring-1 focus:ring-primary/20 placeholder:text-muted-foreground/30"
@@ -227,7 +266,8 @@ export function Contact() {
                   <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-2 italic">Tell me your story...</label>
                   <textarea 
                     required
-                    name="manifesto"
+                    value={formData.manifesto}
+                    onChange={(e) => setFormData({...formData, manifesto: e.target.value})}
                     placeholder="Your message..." 
                     rows={4}
                     className="w-full bg-secondary/50 border border-border rounded-2xl px-6 py-4 text-foreground focus:outline-none focus:border-primary/50 transition-colors focus:ring-1 focus:ring-primary/20 placeholder:text-muted-foreground/30 resize-none"
@@ -239,29 +279,24 @@ export function Contact() {
                   disabled={status === 'sending'}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`group relative flex items-center justify-center gap-3 bg-foreground text-background font-bold h-16 rounded-2xl overflow-hidden transition-all ${
-                    status === 'success' ? 'bg-green-500' : status === 'error' ? 'bg-red-500' : 'hover:bg-primary'
-                  } disabled:opacity-70`}
+                  className={`group relative flex items-center justify-center font-bold h-16 rounded-2xl overflow-hidden transition-all duration-500 text-white ${getButtonStyles()} disabled:opacity-70`}
                 >
-                  <span className="relative z-10 font-display uppercase tracking-widest transition-colors group-hover:text-white">
-                    {status === 'sending' ? "Sending..." : 
-                     status === 'success' ? "Sent with Love ✨" : 
-                     status === 'error' ? "Couldn't Send :(" : 
-                     "Send Message "}
-                  </span>
-                  {status === 'idle' && <Send className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />}
-                  {status === 'sending' && (
-                    <motion.div 
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-5 h-5 border-2 border-background border-t-transparent rounded-full relative z-10"
-                    />
-                  )}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={status}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -20, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="relative z-10 font-display uppercase tracking-widest"
+                    >
+                      {getButtonContent()}
+                    </motion.div>
+                  </AnimatePresence>
                 </motion.button>
               </form>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>
