@@ -79,27 +79,42 @@ function ContactOrb({ icon: Icon, href, label, detail, delay = 0 }: { icon: any,
 }
 
 export function Contact() {
-  const [isSent, setIsSent] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const formRef = useRef<HTMLFormElement>(null);
-  const handleSend = (e: React.FormEvent) => {
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formRef.current) return;
+    if (!formRef.current || status === 'sending') return;
+    
+    setStatus('sending');
     
     const formData = new FormData(formRef.current);
     const name = formData.get('pilot') as string;
     const subject = formData.get('subject') as string;
     const message = formData.get('manifesto') as string;
     
-    // Direct Gmail compose link
-    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=adhithyanvv2005@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\n\nMessage:\n${message}`)}`;
-    
-    window.open(gmailLink, '_blank');
-    
-    setIsSent(true);
-    formRef.current.reset();
-    setTimeout(() => setIsSent(false), 5000);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, subject, message }),
+      });
+
+      if (!response.ok) throw new Error('Failed to send message');
+
+      setStatus('success');
+      formRef.current.reset();
+      setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -221,14 +236,27 @@ export function Contact() {
 
                 <motion.button 
                   type="submit"
+                  disabled={status === 'sending'}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative flex items-center justify-center gap-3 bg-foreground text-background font-bold h-16 rounded-2xl overflow-hidden transition-all hover:bg-primary"
+                  className={`group relative flex items-center justify-center gap-3 bg-foreground text-background font-bold h-16 rounded-2xl overflow-hidden transition-all ${
+                    status === 'success' ? 'bg-green-500' : status === 'error' ? 'bg-red-500' : 'hover:bg-primary'
+                  } disabled:opacity-70`}
                 >
                   <span className="relative z-10 font-display uppercase tracking-widest transition-colors group-hover:text-white">
-                    {isSent ? "Connection Established" : "Connect with Me"}
+                    {status === 'sending' ? "Establishing Link..." : 
+                     status === 'success' ? "Connection Established" : 
+                     status === 'error' ? "Link Failure" : 
+                     "Connect with Me"}
                   </span>
-                  {!isSent && <Send className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />}
+                  {status === 'idle' && <Send className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />}
+                  {status === 'sending' && (
+                    <motion.div 
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      className="w-5 h-5 border-2 border-background border-t-transparent rounded-full relative z-10"
+                    />
+                  )}
                 </motion.button>
               </form>
             </div>

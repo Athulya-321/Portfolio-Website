@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers/Providers";
 import { Navbar } from "@/components/layout/Navbar";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ScrollSpy } from "@/components/ui/ScrollSpy";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         <Providers>
           <CustomCursor />
+          <ScrollSpy />
           <Navbar />
           <main className="flex-1 w-full flex flex-col items-center">
             {children}
