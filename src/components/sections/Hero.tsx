@@ -321,46 +321,52 @@ export function Hero() {
         <div className="flex flex-col items-center md:items-start text-center md:text-left md:w-1/2 z-30">
           
           
-          <div className="overflow-hidden mt-10 mb-8 perspective-[1000px]">
-            <h1 className="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight leading-none text-foreground">
-              {"Crafting ".split('').map((char, i) => (
-                <motion.span
-                  key={`c-${i}`}
-                  className="inline-block"
-                  initial={{ y: 120, opacity: 0, rotateX: -90 }}
-                  animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                  transition={{ delay: 2.5 + i * 0.04, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </motion.span>
-              ))}
-              <span className="gradient-text inline-flex">
+          <div className="mt-10 mb-8 perspective-[1000px]">
+            <h1 className="text-[10vw] xs:text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight leading-[1.1] text-foreground flex flex-col items-center md:items-start text-center md:text-left">
+              <span className="block mb-2 md:mb-0">
+                {"Crafting".split('').map((char, i) => (
+                  <motion.span
+                    key={`c-${i}`}
+                    className="inline-block"
+                    initial={{ y: 120, opacity: 0, rotateX: -90 }}
+                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                    transition={{ delay: 2.5 + i * 0.04, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+              
+              <span className="gradient-text block whitespace-nowrap mb-2 md:mb-0">
                 {"Exceptional".split('').map((char, i) => (
                   <motion.span
                     key={`d-${i}`}
                     className="inline-block"
                     initial={{ y: 120, opacity: 0, rotateX: -90 }}
                     animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    transition={{ delay: 2.5 + (12 + i) * 0.04, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ delay: 2.5 + (9 + i) * 0.04, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+
+              <span className="block">
+                {"Experiences.".split('').map((char, i) => (
+                  <motion.span
+                    key={`e-${i}`}
+                    className="inline-block"
+                    initial={{ y: 120, opacity: 0, rotateX: -90 }}
+                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                    transition={{ delay: 2.5 + (20 + i) * 0.04, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   >
                     {char === ' ' ? '\u00A0' : char}
                   </motion.span>
                 ))}
               </span>
-              <br className="hidden md:block" />
-              {" Experiences.".split('').map((char, i) => (
-                <motion.span
-                  key={`e-${i}`}
-                  className="inline-block mt-2 md:mt-4"
-                  initial={{ y: 120, opacity: 0, rotateX: -90 }}
-                  animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                  transition={{ delay: 2.5 + (19 + i) * 0.04, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </motion.span>
-              ))}
             </h1>
           </div>
+
 
           <motion.p
             custom={6}
