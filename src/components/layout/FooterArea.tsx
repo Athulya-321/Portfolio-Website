@@ -42,23 +42,31 @@ function MagneticName() {
       <span className="text-3xl md:text-3xl lg:text-4xl font-display font-bold tracking-tighter italic text-foreground transition-all duration-300 group-hover:text-primary">
         Athulya{' '}
         <motion.span 
-          className="text-primary inline-block"
+          className="text-primary inline-block origin-bottom"
           animate={{
-            y: [0, -12, 0, 0, 0],
-            rotate: [0, 0, 15, -15, 0],
-            x: [0, 0, 0, -2, 2, -2, 2, 0],
+            y: [0, -50, 0, 0, 0],
+            rotate: [0, 360, 360, 360, 360],
+            scaleY: [1, 1.2, 0.8, 1, 1],
+            scaleX: [1, 0.8, 1.2, 1, 1],
+            x: [0, 0, 0, -4, 4, -2, 2, 0],
           }}
           transition={{
-            duration: 1.2,
+            duration: 1.6,
             repeat: Infinity,
             repeatDelay: 4,
-            times: [0, 0.4, 0.6, 0.8, 1],
-            ease: "easeInOut"
+            times: [0, 0.3, 0.45, 0.7, 1],
+            ease: [
+              [0.33, 1, 0.68, 1], // Rise (Fast to Slow)
+              [0.32, 0, 0.67, 0], // Fall (Slow to Fast)
+              "easeOut",
+              "easeOut"
+            ]
           }}
         >
           M
         </motion.span>
       </span>
+
       <span className="text-[10px] md:text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-bold mt-1 opacity-70 group-hover:opacity-100 transition-opacity">
         Digital Architect • Problem Solver
       </span>
