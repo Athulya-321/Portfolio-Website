@@ -52,7 +52,7 @@ export function TypewriterBio() {
     }
   }, [displayedText, phase, bioIndex]);
 
-  const labels = ['Software Developer', 'AI & DS Undergrad', 'Problem Solver'];
+  const labels = ['Software Developer', 'Computer Science Undergrad', 'Problem Solver'];
 
   return (
     <div className="relative">
