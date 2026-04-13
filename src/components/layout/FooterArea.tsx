@@ -112,7 +112,7 @@ export function FooterArea() {
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 relative z-10 border border-emerald-400/50" />
               </div>
               <span className="text-[10px] md:text-[10px] uppercase tracking-[0.15em] font-black text-foreground/70 group-hover:text-foreground transition-colors">
-                Status: Ready for Internships and Freelancing
+                Status: Ready for Internships and jobs
               </span>
             </motion.div>
           </motion.div>
